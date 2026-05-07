@@ -1,0 +1,34 @@
+package main
+import "fmt"
+
+// "for" is only construct in go for looping (no other loops, like while or do while, but we can use for as a while)
+func main(){
+  // while loop
+  i := 1;
+  for i <= 3 {
+    fmt.Println(i)
+    i++
+  }
+  
+  // for {
+  //   println("Iti") //infinit loop
+  // }
+  
+  // For loop
+  for i := 0; i < 5; i++ {
+    println(i);
+  }
+  
+  for i := 0; i < 5; i++ {
+    if i == 2 {
+      continue //skip the 2
+    }
+    println(i);
+  }
+  
+  println(" ")
+  // range
+  for i:= range 5 {
+    println(i)
+  }
+}
