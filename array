@@ -1,0 +1,40 @@
+package main
+
+import "fmt"
+
+func main(){
+  var num [6]int
+  
+  // for finding the lenght of an array
+  // println(len(num))
+  
+  num[0] = 9
+  num[1] = 9
+  num[2] = 5
+  // num[3] = 0
+  // println(num[2])
+  fmt.Println(num)
+  
+  var val [5]bool
+  val[2] = true
+  
+  fmt.Println(val)
+  
+  var name [3]string
+  name[0] = "Iti"
+  name[1] = "Ayush"
+  name[2] = "golang"
+  fmt.Println(name)
+  
+  nums := [3]int {1, 2, 3}
+  fmt.Println(nums)
+  
+  // 2-D array
+  number := [2][2]int{{9, 5}, {9, 5}}
+  fmt.Println(number)
+  
+  // Array are used for:
+  // - fixed size, that is predictable
+  // - Memory optimazation
+  // - Contant line access
+}
