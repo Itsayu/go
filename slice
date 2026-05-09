@@ -1,0 +1,50 @@
+package main
+
+import "fmt"
+
+// slice it is use for dynamic memory allocation, 
+// most used construct in the go
+func main(){
+  // uninitialized slice is nil
+  var nums []int
+  fmt.Println(nums)
+  fmt.Println(len(nums))
+  fmt.Println(nums == nil)
+  
+  // make can have 2 or 3 parameter
+  var num = make([]int, 2)
+  fmt.Println(num)
+  fmt.Println(num == nil)
+  
+  // capacity -> maximum numbers of elements can fit 
+  fmt.Println(cap(num))
+  
+  var number = make([]int, 2, 5)
+  // in the above 3rd parameter is the initial capacity of an array
+  fmt.Println(cap(number))
+  fmt.Println(number)
+  number = append(number,1)
+  number = append(number,9)
+  number = append(number,5)
+  number = append(number,9)
+  number = append(number,5)
+  fmt.Println(number)
+  fmt.Println(cap(number))
+  fmt.Println(len(number))
+  // in the above case the 1st 2 elements of an array are containg zero if you not want this then below is the (make the 2nd parameter zero)
+  numbers := make([]int, 0, 2)
+  numbers = append(numbers, 7)
+  numbers = append(numbers, 8)
+  fmt.Println(numbers)
+  fmt.Println(len(numbers))
+  
+  
+  // another way
+  numb := []int{}
+  numb = append(numb ,1)
+  numb = append(numb, 2)
+  fmt.Println(numb)
+  fmt.Println(cap(numb))
+  fmt.Println(len(numb))
+  
+}
