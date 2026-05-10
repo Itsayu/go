@@ -1,0 +1,58 @@
+package main
+
+import "fmt"
+import "maps"
+
+func main(){
+  
+  // creating map
+  m := make(map[string]string)
+  
+  // setting an element
+  m["name"] = "golang"
+  m["area"] = "backend"
+  
+  //get an element
+  fmt.Println(m["name"], m["area"])
+  // If key does not exists in the map then  it returns zeros value
+  // fmt.Println(m["phone"])
+  
+  n := make(map[string]int)
+  n["age"] = 25
+  n["price"] = 30
+  n["len"] = 40
+  fmt.Println(n["age"])
+  fmt.Println(n["price"])
+  fmt.Println(n["len"])
+  fmt.Println(n)
+  delete(n, "price")
+  fmt.Println(n)
+  clear(n)
+  fmt.Println(n)
+  
+  // Without Make function
+  o := map[string]int{"price": 99, "phones": 32}
+  fmt.Println(o)
+  p := map[string]string{"name": "Niti", "Person": "Ayu"}
+  fmt.Println(p)
+  
+  _, ok := p["name"]
+  if ok {
+    fmt.Println("All ok")
+  } else {
+    fmt.Println("not ok")
+  }
+  
+  // here V denote the value of that key, by the key is not here then it show 0
+  v, ok := p["name"]
+    fmt.Println(v)
+    if ok {
+      fmt.Println("All ok")
+    } else {
+      fmt.Println("not ok")
+    }
+  
+  p2 := map[string]string{"name": "Niti", "Person": "Ayush"}
+  
+  fmt.Println(maps.Equal(p, p2))
+}
