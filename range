@@ -1,0 +1,64 @@
+package main
+
+import "fmt"
+
+// Range is used to iterating over data structures
+func main(){
+  nums := []int {5, 6, 7}
+  for i:=0; i<len(nums); i++ {
+    fmt.Println("At index", i, "the value is", nums[i])
+  }
+  
+  // RANGE
+  for _, num := range nums {
+    fmt.Println(num)
+  }
+  
+  sum := 0
+  
+  for _, num := range nums {
+    sum += num
+  }
+  fmt.Println(sum)
+  
+  // OR
+  for i, num := range nums {
+    fmt.Println(num, "at index", i)
+  }
+  
+  // sum := 0
+  
+  // for i, num := range nums {
+  //   sum += num
+  // }
+  // fmt.Println(sum)
+  
+  // Range in map
+  m := map[string]string{"fname": "Ayush", "lname": "Tiwari"}
+  // both key and value
+  for k, v := range m {
+    fmt.Println(k, "is", v)
+  }
+  
+  // ONLY key
+  for k := range m {
+    fmt.Println(k)
+  }
+  
+  // only value
+  for _, v := range m {
+    fmt.Println(v)
+  }
+  
+  // unicode code point rune
+  // starting byte of rune
+  
+  for i, c := range "golang"{
+    fmt.Println(i, c)
+  }
+  
+  for i, c := range "golang"{
+    fmt.Println(i, string(c))
+  }
+  
+}
