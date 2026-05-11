@@ -1,0 +1,29 @@
+package main
+
+// Pointers
+
+import "fmt"
+
+// Pass by value
+func changeNum(num int){
+  num = 5
+  fmt.Println("In changeNum", num)
+}
+
+// Pass by Reference
+func numChange(num *int){
+  // here * is denotes dereference
+  *num = 95
+  fmt.Println("in numChange", *num)
+}
+
+
+func main(){
+  num := 1
+  changeNum(num)
+  fmt.Println("Memory addredd", &num)
+  fmt.Println("After changeNum in main", num)
+  
+  numChange(&num)
+  fmt.Println("After numChange in main", num)
+}
