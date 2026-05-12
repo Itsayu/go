@@ -1,0 +1,78 @@
+package main
+
+// Struct 
+
+import "fmt"
+import "time"
+
+// Order struct
+type order struct {
+  id string
+  amount float32
+  status string
+  createdAt time.Time //nanosecond precision
+}
+
+func newOrder (id string, amount float32 ,status string) *order{
+  myOrder1 := order {
+    // if you don't set any filed, defult value is zero value
+    // i.e, int => 0, float => 0, string => " ", bool => false
+    id: id,
+    amount: amount,
+    status: status,
+  }
+  
+  return &myOrder1
+}
+
+// reciver type
+func (o *order) changeStatus(status string){
+  // after the word func "()" will contain reciver type in general there is a convension that we write 1st letter of struct name in this case our struc is order so we write o, and we also written order which denotes type
+  o.status = status
+  
+}
+
+func (o order) getAmount() float32 {
+  return o.amount
+}
+
+func main(){
+  myOrder := order {
+    // if you don't set any filed, defult value is zero value
+    // i.e, int => 0, float => 0, string => " ", bool => false
+    id: "1",
+    amount: 49.99,
+    status: "received",
+    
+  }
+  // myOrder.status = "yo received"
+  myOrder.createdAt = time.Now()
+  fmt.Println("Order struct:", myOrder)
+  
+  
+  var myOrder2 = myOrder
+  myOrder2.id = "4"
+  fmt.Println("Order struct2:", myOrder2)
+  
+  myOrder3 := order {
+    id: "5",
+    amount: 99,
+    status: "not received",
+  }
+  
+  fmt.Println("Order struct3:", myOrder3)
+  
+  myOrder.changeStatus("Confirmed")
+  fmt.Println(myOrder)
+  
+  myOrder1 := newOrder("1", 39, "delivered")
+  fmt.Println(myOrder1)
+  fmt.Println(myOrder1.amount)
+  
+  
+  language := struct {
+    name string
+    isGood bool
+  }{"goLang", true}
+  fmt.Println(language)
+}
