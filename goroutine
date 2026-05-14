@@ -1,0 +1,30 @@
+package main
+
+// GOROUTINE
+
+import "fmt"
+import "time"
+
+func task(id int){
+  fmt.Println("Doing task", id)
+}
+
+func main(){
+  for i := 0; i <= 10; i++{
+    
+    // Another way to make a function (inline function)
+    go func(){
+      fmt.Println(i)
+    }()
+    
+    // OR (better version)
+    
+    go func (i int){
+      fmt.Println(i)
+    }(i)
+    
+    go task(i) //this is for the function is outside of the main function
+  }
+  
+  time.Sleep(time.Second * 2)
+}
