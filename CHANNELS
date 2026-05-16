@@ -1,0 +1,112 @@
+package main
+
+// CHANNELS
+
+import "fmt"
+import "time"
+// import "math/rand"
+
+// For Sending
+// func processNum(numChan chan int){
+//   for num := range numChan {
+//     fmt.Println("processing number", num)
+//     time.Sleep(time.Second)
+//   }
+// }
+
+// For Receiving
+// func sum(result chan int, num1 int, num2 int){
+//   numResult := num1 + num2
+//   result <- numResult
+// }
+
+// Another (goroutine synchronizer)
+// func task(done chan bool){
+//   defer func() { done <- true }()
+  
+//   fmt.Println("processing...")
+// }
+
+
+func emailSender(emailChan chan string, done chan bool){
+  defer func(){ done <- true }()
+  
+  for email := range emailChan {
+    fmt.Println("Sending email to", email)
+    time.Sleep(time.Second)
+  }
+}
+
+
+func main(){
+  // messageChan := make(chan string)
+  // messageChan <- "ping" //channels are blocking untill the receiver side (2nd side) is not ready to receive
+  // msg := <- messageChan
+  // fmt.Println(msg)
+  
+  
+  // // For sending
+  // numChan := make(chan int)
+  
+  // go processNum(numChan)
+  
+  // numChan <- 5
+  
+  // // OR
+  // time.Sleep(time.Second * 2)
+  // for {
+  //   numChan <- rand.Intn(100)
+  // }
+  
+  // // For receiving
+  // result := make(chan int)
+  // go sum(result, 90, 5)
+  // res := <- result
+  // fmt.Println(res)
+  
+  // done := make(chan bool)
+  // go task(done)
+  
+  // <- done //here this is working as a blocking
+  
+  // new
+  // emailChan := make(chan string, 100)
+  
+  // emailChan <- "1@example.com"
+  // emailChan <- "2@example.com"
+  
+  // fmt.Println(<- emailChan)
+  // fmt.Println(<- emailChan)
+  
+  emailChan := make(chan string, 100)
+  done := make(chan bool)
+  
+  go emailSender(emailChan, done)
+  
+  for i:=0;  i<5; i++ {
+    emailChan <- fmt.Sprintf("%d@gmail.com", i)
+  }
+  
+  fmt.Println("Done sending")
+  
+  close(emailChan)
+  <- done
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
